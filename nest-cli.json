@@ -1,7 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/checkit-api-gateway/src",
+  "sourceRoot": "./",
+  "entryFile": "src/main",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
@@ -13,10 +14,12 @@
     "checkit-api-gateway": {
       "type": "application",
       "root": "apps/checkit-api-gateway",
-      "entryFile": "main",
-      "sourceRoot": "apps/checkit-api-gateway/src",
+      "entryFile": "src/main",
+      "sourceRoot": "./",
       "compilerOptions": {
-        "tsConfigPath": "apps/checkit-api-gateway/tsconfig.app.json"
+        "tsConfigPath": "apps/checkit-api-gateway/tsconfig.app.json",
+        "assets": ["packages/proto/*.proto"],
+        "watchAssets": true
       }
     },
     "common": {
@@ -31,19 +34,23 @@
     "user-service": {
       "type": "application",
       "root": "apps/user-service",
-      "entryFile": "main",
-      "sourceRoot": "apps/user-service/src",
+      "entryFile": "src/main",
+      "sourceRoot": "./",
       "compilerOptions": {
-        "tsConfigPath": "apps/user-service/tsconfig.app.json"
+        "tsConfigPath": "apps/user-service/tsconfig.app.json",
+        "assets": ["packages/proto/*.proto"],
+        "watchAssets": true
       }
     },
     "wallet-service": {
       "type": "application",
       "root": "apps/wallet-service",
-      "entryFile": "main",
-      "sourceRoot": "apps/wallet-service/src",
+      "entryFile": "src/main",
+      "sourceRoot": "./",
       "compilerOptions": {
-        "tsConfigPath": "apps/wallet-service/tsconfig.app.json"
+        "tsConfigPath": "apps/wallet-service/tsconfig.app.json",
+        "assets": ["packages/proto/*.proto"],
+        "watchAssets": true
       }
     }
   }

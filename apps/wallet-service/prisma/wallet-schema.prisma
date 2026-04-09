@@ -1,0 +1,16 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("WALLET_DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/wallet-client"
+}
+
+model Wallet {
+  id            String @id @default(uuid())
+  userId        String
+  balance       Decimal @default(0)
+  createdAt     DateTime @default(now())
+}
