@@ -167,3 +167,4 @@ Debit Wallet
 curl -X POST http://localhost:3000/wallet/debit-wallet \
 -H "Content-Type: application/json" \
 -d '{"walletId":"WALLET_ID","userId":"USER_ID","amount":"50"}'
+```
