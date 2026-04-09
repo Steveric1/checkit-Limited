@@ -154,12 +154,15 @@ Create User
 curl -X POST http://localhost:3000/user/create-user \
 -H "Content-Type: application/json" \
 -d '{"email":"test@example.com","name":"John"}'
+
 Create Wallet
 curl -X POST http://localhost:3000/wallet/create-wallet/USER_ID
+
 Credit Wallet
 curl -X POST http://localhost:3000/wallet/credit-wallet \
 -H "Content-Type: application/json" \
 -d '{"walletId":"WALLET_ID","userId":"USER_ID","amount":"100"}'
+
 Debit Wallet
 curl -X POST http://localhost:3000/wallet/debit-wallet \
 -H "Content-Type: application/json" \
