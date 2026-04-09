@@ -148,7 +148,8 @@ Body:
   "userId": "USER_ID",
   "amount": "50"
 }
-
+```
+```bash
 Example cURL Requests
 Create User
 curl -X POST http://localhost:3000/user/create-user \
