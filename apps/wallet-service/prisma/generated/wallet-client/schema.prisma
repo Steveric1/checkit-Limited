@@ -10,7 +10,7 @@ generator client {
 
 model Wallet {
   id        String   @id @default(uuid())
-  userId    String
+  userId    String   @unique
   balance   Decimal  @default(0)
   createdAt DateTime @default(now())
 }

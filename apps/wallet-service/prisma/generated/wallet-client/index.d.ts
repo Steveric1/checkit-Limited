@@ -2000,13 +2000,13 @@ export namespace Prisma {
 
   export type WalletWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId?: string
     AND?: WalletWhereInput | WalletWhereInput[]
     OR?: WalletWhereInput[]
     NOT?: WalletWhereInput | WalletWhereInput[]
-    userId?: StringFilter<"Wallet"> | string
     balance?: DecimalFilter<"Wallet"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Wallet"> | Date | string
-  }, "id">
+  }, "id" | "userId">
 
   export type WalletOrderByWithAggregationInput = {
     id?: SortOrder

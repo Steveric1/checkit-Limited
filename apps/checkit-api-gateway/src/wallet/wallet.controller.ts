@@ -18,9 +18,9 @@ export class WalletController {
     return lastValueFrom(this.walletService.createWallet(createWalletDto));
   }
 
-  @Get('get-wallet/:userId')
-  getWallet(@Param('userId') userId: string) {
-    const getWalletDto: GetWalletDto = { id: userId };
+  @Get('get-wallet/:id')
+  getWallet(@Param('id') id: string) {
+    const getWalletDto: GetWalletDto = { id };
     return lastValueFrom(this.walletService.getWallet(getWalletDto));
   }
 

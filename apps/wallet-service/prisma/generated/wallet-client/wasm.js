@@ -161,8 +161,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"WALLET_DB_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/wallet-client\"\n}\n\nmodel Wallet {\n  id        String   @id @default(uuid())\n  userId    String\n  balance   Decimal  @default(0)\n  createdAt DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "1f5375d78d7fefad22806c33b1be5da45cf39e1cb00dc3a68b9637ca08f2218a",
+  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"WALLET_DB_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/wallet-client\"\n}\n\nmodel Wallet {\n  id        String   @id @default(uuid())\n  userId    String   @unique\n  balance   Decimal  @default(0)\n  createdAt DateTime @default(now())\n}\n",
+  "inlineSchemaHash": "0317e147e4f9c302818425836b44925cf675dea86042173c03d8f83b7b30ce7d",
   "copyEngine": true
 }
 config.dirname = '/'

@@ -86,16 +86,16 @@ export class WalletService implements OnModuleInit {
   }
 
   async getWallet(getWalletDto: GetWalletDto): Promise<WalletResponse> {
+    const { id } = getWalletDto;
     const wallet = await this.walletPrisma.wallet.findUnique({
-      where: { id: getWalletDto.id },
+      where: { id },
     });
 
     if (!wallet) {
-      return {
-        status: 'error',
+      throw new RpcException({
+        code: status.NOT_FOUND,
         message: 'Wallet not found',
-        data: undefined,
-      };
+      });
     }
 
     return {
