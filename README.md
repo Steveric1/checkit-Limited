@@ -170,7 +170,7 @@ Body:
 
 ---
 
-## 📍 Get User by ID
+## Get User by ID
 
 ### Request
 
