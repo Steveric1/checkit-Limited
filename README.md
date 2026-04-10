@@ -111,37 +111,50 @@ pnpm run start:dev
 ## API Endpoints (Gateway)
 
 ### 1. Create User
+```bash
 POST /user/create-user
-
+```
 Body:
 ```json
 {
   "email": "test@example.com",
   "name": "John Doe"
 }
+```
 
 2. Get User by ID
+```bash
 GET /user/get-user-by-id/:id
+```
 
 3. Create Wallet
+```bash
 POST /wallet/create-wallet/:userId
+```
 
 4. Get Wallet
+```bash
 GET /wallet/get-wallet/:walletId
+```
 
 5. Credit Wallet
+```bash
 POST /wallet/credit-wallet
-
+```
+```json
 Body:
 {
   "walletId": "WALLET_ID",
   "userId": "USER_ID",
   "amount": "100"
 }
+```
 
 6. Debit Wallet
+```bash
 POST /wallet/debit-wallet
-
+```
+```json
 Body:
 {
   "walletId": "WALLET_ID",
