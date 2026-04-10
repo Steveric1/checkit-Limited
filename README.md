@@ -141,8 +141,9 @@ GET /wallet/get-wallet/:walletId
 ```bash
 POST /wallet/credit-wallet
 ```
-```json
+
 Body:
+```json
 {
   "walletId": "WALLET_ID",
   "userId": "USER_ID",
@@ -154,8 +155,8 @@ Body:
 ```bash
 POST /wallet/debit-wallet
 ```
-```json
 Body:
+```json
 {
   "walletId": "WALLET_ID",
   "userId": "USER_ID",
