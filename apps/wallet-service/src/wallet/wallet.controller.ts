@@ -8,8 +8,9 @@ import {
 } from '@app/common';
 import { Controller } from '@nestjs/common';
 import { WalletService } from './wallet.service';
+import { GrpcMethod } from '@nestjs/microservices';
 
-@Controller('wallet')
+@Controller()
 @WalletServiceControllerMethods()
 export class WalletController implements WalletServiceController {
   constructor(private readonly walletService: WalletService) {}

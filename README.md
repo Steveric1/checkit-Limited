@@ -156,6 +156,8 @@ curl -X POST http://localhost:3000/user/create-user \
 -H "Content-Type: application/json" \
 -d '{"email":"test@example.com","name":"John"}'
 
+G
+
 Create Wallet
 curl -X POST http://localhost:3000/wallet/create-wallet/USER_ID
 

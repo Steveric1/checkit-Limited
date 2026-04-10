@@ -15,6 +15,7 @@ import { join } from 'path';
         options: {
           package: WALLET_PACKAGE_NAME,
           protoPath: join(process.cwd(), 'packages/proto/wallet.proto'),
+          url: 'localhost:5001',
         },
       },
     ]),
