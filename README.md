@@ -62,7 +62,7 @@ Handles wallet operations.
 
 ---
 
-### 3. API Gateway
+### 3. API Gateway 
 Provides REST endpoints and communicates with microservices via gRPC.
 
 ---
