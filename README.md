@@ -149,26 +149,183 @@ Body:
   "amount": "50"
 }
 ```
+
+---
+
+# USER API
+
+---
+
+## 📍 Get User by ID
+
+### Request
+
 ```bash
-Example cURL Requests
-Create User
+curl http://localhost:3000/user/get-user-by-id/:id
+
+Response
+{
+  "status": "success",
+  "message": "User retrieved successfully",
+  "data": {
+    "id": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "email": "test2@example.com",
+    "name": "John"
+  }
+}
+```
+
+## Create User
+### Request
+```bash
 curl -X POST http://localhost:3000/user/create-user \
 -H "Content-Type: application/json" \
--d '{"email":"test@example.com","name":"John"}'
+-d '{
+  "email": "test@example.com",
+  "name": "John"
+}'
+Response
+{
+  "status": "success",
+  "message": "User created successfully",
+  "data": {
+    "id": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "email": "test2@example.com",
+    "name": "John"
+  }
+}
+```
 
-Get wallet by id
+---
+
+# WALLET API
+
+---
+
+### Get Wallet by ID
+#### Request
+```bash
 curl http://localhost:3000/wallet/get-wallet/:id
+Response
+{
+  "status": "success",
+  "message": "Wallet retrieved successfully",
+  "data": {
+    "id": "105b146d-5f10-4ecb-8425-b0234141e80a",
+    "userId": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "balance": "50"
+  }
+}
+```
 
-Create Wallet
+### Create Wallet
+#### Request
+```bash
 curl -X POST http://localhost:3000/wallet/create-wallet/USER_ID
 
-Credit Wallet
+Response
+{
+  "status": "success",
+  "message": "Wallet created successfully",
+  "data": {
+    "id": "105b146d-5f10-4ecb-8425-b0234141e80a",
+    "userId": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "balance": "0"
+  }
+}
+```
+### Credit Wallet
+#### Request
+```bash
 curl -X POST http://localhost:3000/wallet/credit-wallet \
 -H "Content-Type: application/json" \
--d '{"walletId":"WALLET_ID","userId":"USER_ID","amount":"100"}'
+-d '{
+  "walletId": "WALLET_ID",
+  "userId": "USER_ID",
+  "amount": "100"
+}'
+Response
+{
+  "status": "success",
+  "message": "Wallet credited successfully",
+  "data": {
+    "id": "105b146d-5f10-4ecb-8425-b0234141e80a",
+    "userId": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "balance": "100"
+  }
+}
+```
 
-Debit Wallet
+### Debit Wallet
+#### Request
+```bash
 curl -X POST http://localhost:3000/wallet/debit-wallet \
 -H "Content-Type: application/json" \
--d '{"walletId":"WALLET_ID","userId":"USER_ID","amount":"50"}'
+-d '{
+  "walletId": "WALLET_ID",
+  "userId": "USER_ID",
+  "amount": "50"
+}'
+Response
+{
+  "status": "success",
+  "message": "Wallet debited successfully",
+  "data": {
+    "id": "105b146d-5f10-4ecb-8425-b0234141e80a",
+    "userId": "fa0f968e-242f-46d1-9a26-c3816aceb39d",
+    "balance": "50"
+  }
+}
+```
+
+## VALIDATION ERRORS
+### Invalid User Creation
+#### Request
+```bash
+curl -X POST http://localhost:3000/user/create-user \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "test",
+  "name": "John"
+}'
+Response
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": 3,
+  "details": [
+    {
+      "field": "email",
+      "errors": "email must be a valid email"
+    }
+  ]
+}
+```
+
+### Invalid Wallet Request
+#### Request
+```bash
+curl -X POST http://localhost:3000/wallet/credit-wallet \
+-H "Content-Type: application/json" \
+-d '{
+  "walletId": "WALLET_ID",
+  "3": "3",
+  "amount": "100"
+}'
+Response
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": 3,
+  "details": [
+    {
+      "field": "walletId",
+      "errors": "walletId must be a valid UUID v4"
+    },
+    {
+      "field": "userId",
+      "errors": "userId must be a valid UUID v4"
+    }
+  ]
+}
 ```

@@ -3,8 +3,8 @@ import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { USER_SERVICE } from './constants';
 import { ClientGrpc } from '@nestjs/microservices';
 import {
-  CreateUserDto,
-  GetUserByIdDto,
+  CreateUserValidatorDto,
+  GetUserByIdValidatorDto,
 } from '@app/common';
 
 @Injectable()
@@ -19,11 +19,11 @@ export class UserService implements OnModuleInit {
     this.userService = this.client.getService<UserServiceClient>(USER_SERVICE_NAME);
   }
 
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserValidatorDto) {
     return this.userService.createUser(createUserDto);
   }
 
-  getUserById(getUserByIdDto: GetUserByIdDto) {
+  getUserById(getUserByIdDto: GetUserByIdValidatorDto) {
     return this.userService.getUserById(getUserByIdDto);
   }
 }

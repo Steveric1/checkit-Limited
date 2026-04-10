@@ -2,8 +2,8 @@ import { Controller } from '@nestjs/common';
 import { UsersService } from './users.service';
 import {
   UserServiceController,
-  CreateUserDto,
-  GetUserByIdDto,
+  CreateUserValidatorDto,
+  GetUserByIdValidatorDto,
   UserServiceControllerMethods,
 } from '@app/common';
 
@@ -12,11 +12,11 @@ import {
 export class UsersController implements UserServiceController {
   constructor(private readonly usersService: UsersService) {}
 
-  async createUser(createUserDto: CreateUserDto) {
+  async createUser(createUserDto: CreateUserValidatorDto) {
     return await this.usersService.create(createUserDto);
   }
 
-  async getUserById(getUserByIdDto: GetUserByIdDto) {
+  async getUserById(getUserByIdDto: GetUserByIdValidatorDto) {
     return await this.usersService.findOne(getUserByIdDto);
   }
 }

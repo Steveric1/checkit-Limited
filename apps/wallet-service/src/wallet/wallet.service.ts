@@ -54,7 +54,7 @@ export class WalletService implements OnModuleInit {
 
     // check if wallet exist for user
     const existingWallet = await this.walletPrisma.wallet.findFirst({
-        where: { userId },
+      where: { userId },
     });
 
     if (existingWallet) {
@@ -70,8 +70,7 @@ export class WalletService implements OnModuleInit {
 
     const wallet = await this.walletPrisma.wallet.create({
       data: {
-        userId: createWalletDto.userId,
-        balance: new Prisma.Decimal(0),
+        userId: createWalletDto.userId
       },
     });
 
@@ -94,7 +93,7 @@ export class WalletService implements OnModuleInit {
     if (!wallet) {
       throw new RpcException({
         code: status.NOT_FOUND,
-        message: 'Wallet not found',
+        message: `Wallet with id ${id} not found`,
       });
     }
 
@@ -121,7 +120,7 @@ export class WalletService implements OnModuleInit {
     }
     
     const wallet = await this.walletPrisma.wallet.findFirst({
-        where: { id: walletId, userId },
+      where: { id: walletId, userId },
     });
 
     if (!wallet) {
@@ -141,10 +140,10 @@ export class WalletService implements OnModuleInit {
     return {
       status: 'success',
       message: 'Wallet credited successfully',
-        data: {
-            ...updatedWallet,
-            balance: updatedWallet.balance.toString(),
-        },
+      data: {
+        ...updatedWallet,
+        balance: updatedWallet.balance.toString(),
+      },
     }
   }
 
@@ -192,8 +191,8 @@ export class WalletService implements OnModuleInit {
       status: 'success',
       message: 'Wallet debited successfully',
         data: {
-            ...debitWallet,
-            balance: debitWallet.balance.toString(),
+          ...debitWallet,
+          balance: debitWallet.balance.toString(),
         },
     }
   }

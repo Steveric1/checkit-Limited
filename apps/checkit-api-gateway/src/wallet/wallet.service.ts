@@ -4,10 +4,10 @@ import { ClientGrpc } from '@nestjs/microservices';
 import { WALLET_SERVICE } from 'apps/wallet-service/src/wallet/constants';
 import { WALLET_SERVICE_NAME } from 'packages/proto/wallet';
 import {
-  DebitWalletDto,
-  CreditWalletDto,
-  GetWalletDto,
-  CreateWalletDto,
+  DebitWalletValidatorDto,
+  CreditWalletValidatorDto,
+  GetWalletVAlidatorDto,
+  CreateWalletValidatorDto,
 } from '@app/common';
 
 @Injectable()
@@ -20,20 +20,19 @@ export class WalletService implements OnModuleInit {
     this.walletService = this.client.getService<WalletServiceClient>(WALLET_SERVICE_NAME);
   }
 
-  createWallet(createWalletDto: CreateWalletDto) {
+  createWallet(createWalletDto: CreateWalletValidatorDto) {
     return this.walletService.createWallet(createWalletDto);
   }
 
-  getWallet(getWalletDto: GetWalletDto) {
+  getWallet(getWalletDto: GetWalletVAlidatorDto) {
     return this.walletService.getWallet(getWalletDto);
   }
 
-  creditWallet(creditWalletDto: CreditWalletDto) {
+  creditWallet(creditWalletDto: CreditWalletValidatorDto) {
     return this.walletService.creditWallet(creditWalletDto);
   }
 
-  debitWallet(debitWalletDto: DebitWalletDto) {
+  debitWallet(debitWalletDto: DebitWalletValidatorDto) {
     return this.walletService.debitWallet(debitWalletDto);
   }
-
 }
